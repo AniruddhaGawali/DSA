@@ -8,7 +8,7 @@ int LinearSearch(int *arr, int key)
     return 0;
 }
 
-int BianarySearch(int *arr, int key, int len)
+int BinarySearch(int *arr, int key, int len)
 {
     int start = 0, end = len;
 
@@ -55,7 +55,27 @@ int main()
     // menu
     int arr[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-    
+    int userInput, key, ans;
+
+    printf("Enter 1 for Linear Search \n Enter 2 for BinarySearch\n>> ");
+    scanf("%d", &userInput);
+
+    printf("\nEnter the ey to find >> ");
+    scanf("%d", &key);
+
+    switch (userInput)
+    {
+    case 1:
+        ans = LinearSearch(arr, key);
+        break;
+
+    default:
+        Sort(arr, sizeof(arr) / 4);
+        ans = BinarySearch(arr, key, sizeof(arr) / 4);
+        break;
+    }
+
+    printf("\nkey:%d is find at %d\n", key, ans);
 
     return 0;
 }
