@@ -43,24 +43,38 @@ int SelectionSort(int *arr, int len)
         temp = arr[i];
         arr[i] = arr[min];
         arr[min] = temp;
-        
     }
 
     return 0;
 }
 
+int InserctionSort(int *arr, int len)
+{
+    for (int i = 0; i < len; i++)
+    {
+        //printArray(arr, 6);
+        for (int j = i + 1; j >= 0; j--)
+        {
+            if (arr[j-1] > arr[j])
+            {
+                printArray(arr, 6);
+                int temp =0;
+                temp = arr[j];
+                arr[j] = arr[j - 1];
+                arr[j - 1] = temp;
+                printArray(arr, 6);
+            }
+        }
+    }
 
-
-
+    return 0;
+}
 
 int main()
 {
 
     int arr[] = {7, 3, 6, 2, 1, 5};
-    SelectionSort(arr, sizeof(arr) / 4);
-    printf("\n\n");
-    int arr1[] = {7, 3, 6, 2, 1, 5};
-    BubbleSort(arr1, sizeof(arr1) / 4);
+    InserctionSort(arr, sizeof(arr) / 4);
 
     return 0;
 }
