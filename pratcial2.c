@@ -48,33 +48,66 @@ int SelectionSort(int *arr, int len)
     return 0;
 }
 
-int InserctionSort(int *arr, int len)
+int InsertionSort(int *arr, int len)
 {
-    for (int i = 0; i < len; i++)
+    int temp = arr[0];
+    for (int i = 1; i <= len; i++)
     {
-        //printArray(arr, 6);
-        for (int j = i + 1; j >= 0; j--)
+        printArray(arr, len);
+        for (int j = i - 1; j >= 0 || arr[j] > temp; j--)
         {
-            if (arr[j-1] > arr[j])
+            if (arr[j] > arr[j + 1])
             {
-                printArray(arr, 6);
-                int temp =0;
                 temp = arr[j];
-                arr[j] = arr[j - 1];
-                arr[j - 1] = temp;
-                printArray(arr, 6);
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
     }
+    return 0;
+}
 
+int createArray(int *arr, int len)
+{
+    printf("\nEnter your array elem in one line\n>> ");
+    for (int i = 0; i < len; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
     return 0;
 }
 
 int main()
 {
+    int UserInput, len;
+    printf("Enter the lenght of array\n");
+    scanf("%d", &len);
+    int arr[len];
+    createArray(arr, len);
 
-    int arr[] = {7, 3, 6, 2, 1, 5};
-    InserctionSort(arr, sizeof(arr) / 4);
+    printf("\nSelect the sorting\n1 for Bubble Sort\n2 for Selection Sort\n3 for Insertion Sort\n>> ");
+    scanf("%d", &UserInput);
+
+    printf("\nYour Enter array is\n");
+    printArray(arr, len);
+    printf("\nSorting...\n");
+    switch (UserInput)
+    {
+    case 1:
+        BubbleSort(arr, len);
+        break;
+    case 2:
+        SelectionSort(arr, len);
+        break;
+    case 3:
+        InsertionSort(arr, len);
+    default:
+        break;
+    }
+
+    BubbleSort(arr, len);
+    printf("\nArray after Sorting\n");
+    printArray(arr, len);
 
     return 0;
 }
