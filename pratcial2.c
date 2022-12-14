@@ -50,11 +50,11 @@ int SelectionSort(int *arr, int len)
 
 int InsertionSort(int *arr, int len)
 {
-    int temp = arr[0];
+    int temp
     for (int i = 1; i <= len; i++)
     {
         // printArray(arr, len);
-        for (int j = i - 1; j >= 0 || arr[j] > temp; j--)
+        for (int j = i - 1; j >= 0 ; j--)
         {
             if (arr[j] > arr[j + 1])
             {
