@@ -33,6 +33,7 @@ void SelectionSort(int arr[], int len)
     int small = 0;
     for (int i = 0; i < len; i++)
     {
+        PrintArray(arr, len);
         for (int j = i; j < len; j++)
         {
             if (arr[j] < arr[small])
@@ -45,12 +46,12 @@ void SelectionSort(int arr[], int len)
 void Insertionsort(int arr[], int len)
 {
     int j;
-
     for (int i = 1; i < len; i++)
     {
         j = i;
         while (j != 0)
         {
+            PrintArray(arr, len);
             if (arr[j] < arr[j - 1])
                 Swap(arr, j, j - 1);
             j--;
@@ -66,12 +67,12 @@ int Partition(int arr[], int start, int end)
 
     do
     {
-        while (arr[b] <= arr[p])
+        while (arr[b] <= arr[p] && b < end)
         {
             b++;
         }
 
-        while (arr[s] > arr[p])
+        while (arr[s] > arr[p] && s > start)
         {
             s--;
         }
@@ -82,6 +83,7 @@ int Partition(int arr[], int start, int end)
         }
 
     } while (b < s);
+    printf("s=%d b=%d p=%d\n", s, b, p);
     Swap(arr, p, s);
     return s;
 }
@@ -149,15 +151,15 @@ void MergeSort(int arr[], int start, int end)
 
 int main()
 {
-    int arr[5] = {4, 3, 2, 1, 0};
+    int arr[] = {3, 6, 2, 6, 1, 5, 4, 0, 4, 2, 0, 3};
     int len = sizeof(arr) / sizeof(arr[0]);
 
-    PrintArray(arr, len);
+    // PrintArray(arr, len);
     // BubbleSort(arr, len);
     // SelectionSort(arr, len);
-    // Insertionsort(arr, len);
-    // QuickSort(arr, 0, len - 1, len);
-    MergeSort(arr, 0, len - 1);
+    // Insertionsort(arr,  len);
+    QuickSort(arr, 0, len - 1, len);
+    // MergeSort(arr, 0, len - 1);
     PrintArray(arr, len);
 
     return 0;
